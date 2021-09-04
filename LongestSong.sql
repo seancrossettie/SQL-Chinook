@@ -35,4 +35,25 @@ from track t
 where al.ArtistId = a.ArtistId
 )
 
---
+-- Union, Except, Union All
+-- Combining two or more result set that may or may not have anything in common
+select left(Name, 1)
+from Artist
+union all
+select left(FirstName, 1)
+from Customer
+
+
+select Email, 'Employee' as [type]
+from Employee
+union
+select Email, 'Customer'
+from Customer
+
+
+-- except operator
+select ArtistId
+from Artist a
+except 
+select ArtistId
+from Album
